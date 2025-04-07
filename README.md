@@ -1,6 +1,6 @@
 # API PicPay (api-picp)
 
-API desenvolvida com **FastAPI** para gerenciar usuários, incluindo funcionalidades como criação, listagem e validação de e-mails duplicados. Este projeto utiliza **Docker** e **Docker Compose** para facilitar a configuração e execução do ambiente.
+API desenvolvida com **FastAPI** para gerenciar usuários, incluindo funcionalidades como criação, listagem e validação de e-mails duplicados. Este projeto pode ser executado de duas formas: utilizando um ambiente virtual Python ou via **Docker Compose**.
 
 ---
 
@@ -14,8 +14,15 @@ API desenvolvida com **FastAPI** para gerenciar usuários, incluindo funcionalid
 
 ## **Pré-requisitos**
 Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
-- [Docker](https://docs.docker.com/get-docker/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Para execução local:
+- **Python 3.10 ou superior**
+- **pip** (gerenciador de pacotes do Python)
+- **virtualenv** (opcional, para criar ambientes virtuais)
+
+### Para execução via Docker:
+- **Docker**
+- **Docker Compose**
 
 ---
 
@@ -23,7 +30,6 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 1. **Estrutura do Projeto**:
    Certifique-se de que o projeto está organizado da seguinte forma:
 ```bash
-
 ├── app
 │   ├── app.log
 │   ├── controller
@@ -59,27 +65,57 @@ O banco de dados SQLite será inicializado automaticamente ao executar o projeto
 
 ## **Instalação e Execução**
 
-### **1. Clonar o Repositório**
-Clone o repositório para sua máquina local:
-```bash
-git clone https://github.com/brunofds/api-picp.git
-cd api-picp
-```
+### **Opção 1: Execução Local com Virtualenv**
+1. **Clonar o Repositório**:
+   Clone o repositório para sua máquina local:
+   ```bash
+   git clone https://github.com/brunofds/api-picp.git
+   cd api-picp
+   ```
 
-### **2. Construir a Imagem Docker**
-Construa a imagem Docker do projeto:
-```bash
-docker compose build
-```
+2. **Criar e Ativar o Ambiente Virtual**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # No Windows: venv\Scripts\activate
+   ```
 
-### **3. Executar o Projeto**
-Inicie o ambiente com o Docker Compose:
-```bash
-docker compose up fastapi-dev
-```
-O servidor estará disponível em: [http://localhost:8000](http://localhost:8000)
+3. **Instalar Dependências**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### **4. Testar a API**
+4. **Executar o Projeto**:
+   Inicie o servidor FastAPI:
+   ```bash
+   uvicorn app.main:app --host 0.0.0.0 --port 8000
+   ```
+   O servidor estará disponível em: [http://localhost:8000](http://localhost:8000)
+
+---
+
+### **Opção 2: Execução com Docker Compose**
+1. **Clonar o Repositório**:
+   Clone o repositório para sua máquina local:
+   ```bash
+   git clone https://github.com/brunofds/api-picp.git
+   cd api-picp
+   ```
+
+2. **Construir a Imagem Docker**:
+   ```bash
+   docker compose build
+   ```
+
+3. **Executar o Projeto**:
+   Inicie o ambiente com o Docker Compose:
+   ```bash
+   docker compose up fastapi-dev
+   ```
+   O servidor estará disponível em: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## **Testar a API**
 Acesse a documentação interativa da API gerada automaticamente pelo FastAPI:
 - **Swagger UI**: [http://localhost:8000/docs](http://localhost:8000/docs)
 - **ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
@@ -110,5 +146,5 @@ docker compose up --build
 
 ---
 
-## **Possiveis problemas**
-- Caso não execute o projeto via docker e esteja utilizando Windows, provavelmente ocorrerá um problema no caminho do arquivo de log que, por padrão, está sendo gerado na pasta /tmp/. O problema pode ser resolvido mapeando outra pasta para log em main.py.
+## **Possíveis Problemas**
+- Caso não execute o projeto via Docker e esteja utilizando Windows, pode ocorrer um problema no caminho do arquivo de log que, por padrão, está sendo gerado na pasta `/tmp/`. O problema pode ser resolvido mapeando outra pasta para log em `main.py`.

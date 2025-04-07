@@ -49,8 +49,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 ├── docker-compose.yml
 ├── Dockerfile
 ├── README.md
-├── requirements.txt
-└──  tree.txt
+└── requirements.txt
 ```
 
 2. **Banco de Dados**:

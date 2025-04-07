@@ -33,4 +33,3 @@ class UsuarioUpdate(BaseModel):
     """
     nome: Optional[str] = None
     email: Optional[EmailStr] = None
-    senha: Optional[str] = None

@@ -22,9 +22,42 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 ## **Configurações Necessárias**
 1. **Estrutura do Projeto**:
    Certifique-se de que o projeto está organizado da seguinte forma:
-```bash
-/api-picp ├── app/ │ ├── main.py │ ├── controller/ │ │ ├── usuario_controller.py │ ├── database/ │ │ ├── init_db.py │ ├── model/ │ │ ├── usuario_model.py │ └── ... ├── Dockerfile ├── docker-compose.yml ├── requirements.txt └── README.md
-```
+.
+├── app
+│   ├── app.log
+│   ├── controller
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   └── usuario_controller.py
+│   ├── database
+│   │   ├── init_db.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   ├── database.db
+│   ├── logs
+│   │   └── app.log
+│   ├── main.py
+│   ├── model
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   ├── usuario_model.py
+│   │   └── usuario_schema.py
+│   ├── __pycache__
+│   │   ├── main.cpython-310.pyc
+│   │   └── main.cpython-311.pyc
+│   └── tests
+│       ├── conftest.py
+│       ├── __init__.py
+│       ├── __pycache__
+│       ├── test_usuario_api.py
+│       └── test_usuario_model.py
+├── database.db
+├── docker-compose.yml
+├── Dockerfile
+├── README.md
+├── requirements.txt
+└──  tree.txt
+
 
 2. **Banco de Dados**:
 O banco de dados SQLite será inicializado automaticamente ao executar o projeto. Certifique-se de que o arquivo `init_db.py` está configurado corretamente para criar as tabelas necessárias.

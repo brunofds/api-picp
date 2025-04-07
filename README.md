@@ -22,7 +22,8 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 ## **Configurações Necessárias**
 1. **Estrutura do Projeto**:
    Certifique-se de que o projeto está organizado da seguinte forma:
-.
+```bash
+
 ├── app
 │   ├── app.log
 │   ├── controller
@@ -57,7 +58,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 ├── README.md
 ├── requirements.txt
 └──  tree.txt
-
+```
 
 2. **Banco de Dados**:
 O banco de dados SQLite será inicializado automaticamente ao executar o projeto. Certifique-se de que o arquivo `init_db.py` está configurado corretamente para criar as tabelas necessárias.

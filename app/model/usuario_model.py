@@ -5,9 +5,11 @@ import logging
 logger = logging.getLogger(__name__)
 
 class UsuarioModel:
+    db_path = "database.db"  # default
+
     @staticmethod
     def get_connection():
-        conn = sqlite3.connect('database.db')
+        conn = sqlite3.connect(UsuarioModel.db_path)
         conn.row_factory = sqlite3.Row
         return conn
 

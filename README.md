@@ -28,28 +28,21 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 │   ├── app.log
 │   ├── controller
 │   │   ├── __init__.py
-│   │   ├── __pycache__
 │   │   └── usuario_controller.py
 │   ├── database
 │   │   ├── init_db.py
-│   │   ├── __init__.py
-│   │   └── __pycache__
+│   │   └── __init__.py
 │   ├── database.db
 │   ├── logs
 │   │   └── app.log
 │   ├── main.py
 │   ├── model
 │   │   ├── __init__.py
-│   │   ├── __pycache__
 │   │   ├── usuario_model.py
 │   │   └── usuario_schema.py
-│   ├── __pycache__
-│   │   ├── main.cpython-310.pyc
-│   │   └── main.cpython-311.pyc
 │   └── tests
 │       ├── conftest.py
 │       ├── __init__.py
-│       ├── __pycache__
 │       ├── test_usuario_api.py
 │       └── test_usuario_model.py
 ├── database.db

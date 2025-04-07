@@ -118,5 +118,5 @@ docker compose up --build
 
 ---
 
-## **Contribuição**
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+## **Possiveis problemas**
+- Caso não execute o projeto via docker e esteja utilizando Windows, provavelmente ocorrerá um problema no caminho do arquivo de log que, por padrão, está sendo gerado na pasta /tmp/. O problema pode ser resolvido mapeando outra pasta para log em main.py.

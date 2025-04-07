@@ -8,7 +8,7 @@ class Usuario(BaseModel):
         Modelo Pydantic para representar os dados do usuário
     """
     nome: str
-    email: str
+    email: EmailStr
 
 
 # Modelo Pydantic para representar os dados do usuário
@@ -20,7 +20,7 @@ class UsuarioOut(Usuario):
         nome (str): The name of the user.
     """
     id: int
-    nome: str
+
 
 
 class UsuarioUpdate(BaseModel):

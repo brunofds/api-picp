@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from controller.usuario_controller import router
+from app.router import router  # Importa o roteador centralizado
 from database.init_db import init_db
 import logging
 

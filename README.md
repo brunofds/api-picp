@@ -37,7 +37,7 @@ Clone o repositório para sua máquina local:
 ```bash
 git clone https://github.com/brunofds/api-picp.git
 cd api-picp
-
+```
 
 ### **2. Construir a Imagem Docker**
 Construa a imagem Docker do projeto:

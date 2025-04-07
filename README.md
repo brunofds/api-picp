@@ -77,13 +77,13 @@ cd api-picp
 ### **2. Construir a Imagem Docker**
 Construa a imagem Docker do projeto:
 ```bash
-docker-compose build
+docker compose build
 ```
 
 ### **3. Executar o Projeto**
 Inicie o ambiente com o Docker Compose:
 ```bash
-docker-compose up
+docker compose up fastapi-dev
 ```
 O servidor estará disponível em: [http://localhost:8000](http://localhost:8000)
 
@@ -99,13 +99,13 @@ Acesse a documentação interativa da API gerada automaticamente pelo FastAPI:
 ### **Parar os Contêineres**
 Para parar os contêineres em execução:
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### **Recriar os Contêineres**
 Se houver alterações no código ou na configuração, recrie os contêineres:
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 ---

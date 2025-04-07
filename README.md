@@ -22,8 +22,9 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 ## **Configurações Necessárias**
 1. **Estrutura do Projeto**:
    Certifique-se de que o projeto está organizado da seguinte forma:
-
+```bash
 /api-picp ├── app/ │ ├── main.py │ ├── controller/ │ │ ├── usuario_controller.py │ ├── database/ │ │ ├── init_db.py │ ├── model/ │ │ ├── usuario_model.py │ └── ... ├── Dockerfile ├── docker-compose.yml ├── requirements.txt └── README.md
+```
 
 2. **Banco de Dados**:
 O banco de dados SQLite será inicializado automaticamente ao executar o projeto. Certifique-se de que o arquivo `init_db.py` está configurado corretamente para criar as tabelas necessárias.

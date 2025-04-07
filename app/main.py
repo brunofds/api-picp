@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from controller.usuario_controller import router
-from model.usuario_model import UsuarioModel
+from database.init_db import init_db
 
 
 app = FastAPI()
 
-# Inicializa o banco
-UsuarioModel.criar_tabela()
+# Inicializa todas as tabelas do banco
+init_db()
 
 # Registra as rotas
 app.include_router(router)

@@ -8,7 +8,7 @@ import logging
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-@router.post('/users', response_model=dict)
+@router.post('/', response_model=dict)
 def add_usuario(usuario: Usuario):
     try:
         logger.info("Recebida requisição para criar usuário: %s", usuario)
@@ -18,13 +18,13 @@ def add_usuario(usuario: Usuario):
         logger.warning(f"Email já cadastrado: {usuario.email}")
         raise HTTPException(status_code=400, detail='Email já cadastrado')
 
-@router.get('/users', response_model=List[UsuarioOut])
+@router.get('/', response_model=List[UsuarioOut])
 def get_usuarios():
     usuarios = UsuarioModel.listar()
     logger.info(f"{len(usuarios)} usuários encontrados.")
     return [{'id': u['id'], 'nome': u['nome'], 'email': u['email']} for u in usuarios]
 
-@router.get('/users/{id}', response_model=UsuarioOut)
+@router.get('/{id}', response_model=UsuarioOut)
 def get_usuario(id: int):
     usuario = UsuarioModel.listar()
     logger.info(f"Requisição para obter usuário ID {id}")
@@ -34,7 +34,7 @@ def get_usuario(id: int):
             return {'id': u['id'], 'nome': u['nome'], 'email': u['email']}
     raise HTTPException(status_code=404, detail='Usuário não encontrado')
 
-@router.delete('/users/{id}', response_model=dict)
+@router.delete('/{id}', response_model=dict)
 def delete_usuario(id: int):
     logger.info(f"Requisição para deletar usuário ID {id}")
     if UsuarioModel.deletar(id) == 0:
@@ -42,7 +42,7 @@ def delete_usuario(id: int):
         raise HTTPException(status_code=404, detail='Usuário não encontrado')
     return {'message': 'Usuário deletado com sucesso'}
 
-@router.put('/users/{id}', response_model=dict)
+@router.put('/{id}', response_model=dict)
 def update_usuario(id: int, usuario: UsuarioUpdate):
     logger.info(f"Requisição para atualizar usuário ID {id}")
     if UsuarioModel.atualizar(id, usuario.nome, usuario.email) == 0:

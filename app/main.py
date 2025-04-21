@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.router import router  # Importa o roteador centralizado
+from router import router  # Importa o roteador centralizado
 from database.init_db import init_db
 import logging
 

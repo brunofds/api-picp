@@ -48,13 +48,26 @@ class UsuarioModel:
             return result.rowcount
 
 
-    @staticmethod    
+    @staticmethod
+    def _valida_email_existente(email, usuario_id, conn):
+        """
+        Verifica se o email já existe na tabela de usuários, exceto para o usuário atual.
+        """
+        cursor = conn.execute('SELECT COUNT(*) FROM usuario WHERE email = ? AND id != ?', (email, usuario_id))
+        count = cursor.fetchone()[0]
+        return count > 0
+
+    @staticmethod
     def atualizar(usuario_id: int, nome: Optional[str] = None, email: Optional[str] = None):
         """
         Atualiza apenas os campos fornecidos do usuário, mantendo os outros inalterados.
         """
         logger.info(f"Atualizando usuário ID {usuario_id} para nome={nome}, email={email}")
         with UsuarioModel.get_connection() as conn:
+            # Verifica se o email já existe
+            if email and UsuarioModel._valida_email_existente(email, usuario_id, conn):
+                logger.warning(f"Email já cadastrado: {email}")
+                raise sqlite3.IntegrityError('Email já cadastrado')
             query = 'UPDATE usuario SET '
             params = []
             if nome is not None:

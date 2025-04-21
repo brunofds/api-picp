@@ -45,8 +45,13 @@ def delete_usuario(id: int):
 @router.put('/{id}', response_model=dict)
 def update_usuario(id: int, usuario: UsuarioUpdate):
     logger.info(f"Requisição para atualizar usuário ID {id}")
-    if UsuarioModel.atualizar(id, usuario.nome, usuario.email) == 0:
-        logger.warning(f"Usuário ID {id} não encontrado para atualizar")
-        raise HTTPException(status_code=404, detail='Usuário não encontrado')
-    logger.info(f"Usuário ID {id} atualizado com sucesso")
-    return {'message': 'Usuário atualizado com sucesso'}
+    try:
+        linhas_afetadas = UsuarioModel.atualizar(
+            id, usuario.nome, usuario.email
+        )
+        if linhas_afetadas == 0:
+            # logger.warning(f"Usuário ID {user_id} não encontrado para atualizar")
+            raise HTTPException(status_code=404, detail='Usuário não encontrado')
+        return {'message': 'Usuário atualizado com sucesso'}
+    except sqlite3.IntegrityError as e:
+        raise HTTPException(status_code=400, detail=str(e)) from e

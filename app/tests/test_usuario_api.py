@@ -72,3 +72,10 @@ def test_deletar_usuario_inexistente():
     response = client.delete("/users/999")
     assert response.status_code == 404
     assert response.json()["detail"] == "Usuário não encontrado"
+
+
+def test_atualizar_email_existente():
+    client.post("/users", json={"nome": "Maria", "email": "maria@email.com"})
+    client.post("/users", json={"nome": "Carlos", "email": "carlos@email.com"})
+    response = client.put("/users/1", json={"nome": "Maria", "email": "carlos@email.com"})
+    assert response.status_code == 400
